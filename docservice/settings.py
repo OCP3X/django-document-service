@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     
     # Local apps
-    'docservice.documents',
+    'docservice.docservice.documents',
 ]
 
 MIDDLEWARE = [
@@ -80,10 +80,21 @@ WSGI_APPLICATION = 'docservice.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'document_service',
+        'USER': 'postgres',
+        'PASSWORD': '123456',
+        'HOST': 'localhost',
+        'PORT': '5432',
+        'OPTIONS': {
+            'client_encoding': 'UTF8',
+        },
     }
 }
+
+# Configurar el directorio de medios
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Password validation
