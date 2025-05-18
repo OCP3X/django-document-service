@@ -1,0 +1,18 @@
+apiVersion: networking.kubernetes.io/v1
+kind: Ingress
+metadata:
+  name: document-service-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+spec:
+  rules:
+  - host: document-service.local
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: document-service
+            port:
+              number: 80
